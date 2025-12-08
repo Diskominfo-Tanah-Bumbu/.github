@@ -1,0 +1,5 @@
+{
+  "name": "Node.js CI",
+  "description": "Quality check untuk project Node.js/TypeScript (lint, type-check, build)",
+  "filePatterns": ["package.json"]
+}

@@ -1,0 +1,5 @@
+{
+  "name": "PHP Laravel CI",
+  "description": "Quality check untuk project PHP Laravel (PHPStan, Pint, PHPUnit)",
+  "filePatterns": ["composer.json"]
+}
