@@ -1,0 +1,56 @@
+name: Turborepo CI
+
+on:
+  push:
+    branches:
+      - "development"
+      - "production"
+      - "feat/**"
+      - "fix/**"
+      - "chore/**"
+      - "refactor/**"
+      - "hotfix/**"
+  
+  # Tetap jalankan saat Pull Request ke branch utama
+  pull_request:
+    branches: 
+      - "development"
+      - "production"
+      - "main"
+      - "master"
+
+jobs:
+  quality-check:
+    name: Build & Quality Check
+    runs-on: ubuntu-latest
+    
+    # Action sebelumnya akan dibatalkan jika ada push baru. Hemat kuota menit CI
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache Turbo
+        uses: actions/cache@v3
+        with:
+          path: .turbo
+          key: turbo-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ runner.os }}-
+
+      - name: Run Quality Checks & Build
+        run: npx turbo run lint type-check build
