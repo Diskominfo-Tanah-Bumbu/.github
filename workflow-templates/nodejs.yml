@@ -1,14 +1,6 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: 
-      - "development"
-      - "production"
-      - "feat/**"
-      - "fix/**"
-      - "chore/**"
-      - "refactor/**"
   pull_request:
     branches: 
       - "development"
