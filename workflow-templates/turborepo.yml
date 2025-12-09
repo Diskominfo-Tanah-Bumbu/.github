@@ -1,17 +1,6 @@
 name: Turborepo CI
 
 on:
-  push:
-    branches:
-      - "development"
-      - "production"
-      - "feat/**"
-      - "fix/**"
-      - "chore/**"
-      - "refactor/**"
-      - "hotfix/**"
-  
-  # Tetap jalankan saat Pull Request ke branch utama
   pull_request:
     branches: 
       - "development"
