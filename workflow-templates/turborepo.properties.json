@@ -1,0 +1,12 @@
+{
+  "name": "Turborepo CI Standard",
+  "description": "Workflow standar untuk project Turborepo (Lint, Typecheck, Build)",
+  "categories": [
+    "JavaScript",
+    "Turborepo"
+  ],
+  "filePatterns": [
+    "package.json",
+    "turbo.json"
+  ]
+}
