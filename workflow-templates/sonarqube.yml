@@ -1,19 +1,6 @@
 name: SonarQube Analysis
 
 on:
-  push:
-    branches:
-      - $default-branch
-      - production
-      - main
-      - master
-      - staging
-      - development
-      - feature/**
-      - fix/**
-      - feat/**
-      - bugfix/**
-      - hotfix/**
   pull_request:
     types: [opened, synchronize, reopened]
 
