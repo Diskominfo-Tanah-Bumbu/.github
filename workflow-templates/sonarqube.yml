@@ -1,7 +1,8 @@
 name: SonarQube Analysis
    on:
      push:
-       branches: [$default-branch]
+       branches: 
+         - $default-branch
      pull_request:
        types: [opened, synchronize, reopened]
    jobs:
@@ -19,3 +20,4 @@ name: SonarQube Analysis
            with:
              args: >
                -Dsonar.projectKey=${{ github.repository_owner }}_${{ github.event.repository.name }}
+               -Dsonar.projectName=${{ github.event.repository.name }}
